@@ -5,22 +5,36 @@ describe("A thermostat", function(){
     thermostat = new Thermostat()
   });
 
-
-  it("should start at 20 degree", function(){
+  it("Should start at 20 degree", function(){
     expect(thermostat.temperature).toEqual(20)
   });
 
-  it("can increase the temperature with up", function(){
+  it("Should be in powersaving mode by default", function(){
+    expect(thermostat.isPowerSaving()).toBe(true);
+  })
+
+  it("Sets powersaving to false", function(){
+    thermostat.powerSavingOff();
+    expect(thermostat.isPowerSaving()).toBe(false);
+  })
+
+  it("Sets powersaving to true", function(){
+    thermostat.powerSavingOff();
+    thermostat.powerSavingOn();
+    expect(thermostat.isPowerSaving()).toBe(true);
+  })
+
+  it("Can increase the temperature", function(){
     thermostat.up()
     expect(thermostat.temperature).toEqual(21)
   });
 
-  it("can decrease the temperature with down", function(){
+  it("Can decrease the temperature", function(){
     thermostat.down()
     expect(thermostat.temperature).toEqual(19)
   });
 
-  it("cannot decrease the temperature futher than 10", function(){
+  it("Cannot decrease the temperature futher than 10", function(){
     for(var i = 0; i < 10; i++){ thermostat.down() };
     expect(function(){thermostat.down()}).toThrowError("The lowest temperature is 10")
   });
