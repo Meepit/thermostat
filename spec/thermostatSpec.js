@@ -21,16 +21,12 @@ describe("A thermostat", function(){
   });
 
   it("cannot decrease the temperature futher than 10", function(){
-    for(var i = 20; i > 10; i--){
-      thermostat.down()
-    };
+    for(var i = 0; i < 10; i++){ thermostat.down() };
     expect(function(){thermostat.down()}).toThrowError("The lowest temperature is 10")
   });
 
   it("Should have a max temp of 25 if power saving mode is on", function(){
-    for(var i = 0; i < 5; i++){
-      thermostat.up();
-    };
+    for(var i = 0; i < 5; i++){ thermostat.up(); };
     expect(function(){
       thermostat.up()
     }).toThrowError("Max temperature is 25 when power saving is on");
