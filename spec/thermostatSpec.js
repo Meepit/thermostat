@@ -6,7 +6,7 @@ describe("A thermostat", function(){
   });
 
   it("Should start at 20 degree", function(){
-    expect(thermostat.temperature).toEqual(20)
+    expect(thermostat.getCurrentTemperature()).toEqual(20)
   });
 
   it("Should be in powersaving mode by default", function(){
@@ -26,12 +26,12 @@ describe("A thermostat", function(){
 
   it("Can increase the temperature", function(){
     thermostat.up()
-    expect(thermostat.temperature).toEqual(21)
+    expect(thermostat.getCurrentTemperature()).toEqual(21)
   });
 
   it("Can decrease the temperature", function(){
     thermostat.down()
-    expect(thermostat.temperature).toEqual(19)
+    expect(thermostat.getCurrentTemperature()).toEqual(19)
   });
 
   it("Cannot decrease the temperature futher than 10", function(){
@@ -57,6 +57,22 @@ describe("A thermostat", function(){
   it("Should have a reset button that resets temperature to 20", function(){
     thermostat.up();
     thermostat.reset();
-    expect(thermostat.temperature).toEqual(20);
+    expect(thermostat.getCurrentTemperature()).toEqual(20);
+  });
+
+  it("Should return low-usage when energy usage is low", function(){
+    for(var i = 0; i < 3; i ++){thermostat.down()}
+    expect(thermostat.reportUsage()).toEqual("low-usage");
+  });
+
+  it("Should return medium-usage when energy usage is medium", function(){
+    for(var i = 0; i < 4; i ++){thermostat.up()}
+    expect(thermostat.reportUsage()).toEqual("medium-usage");
+  });
+
+  it("Should return high-usage when energy usage is high", function(){
+    thermostat.powerSavingOff()
+    for(var i = 0; i < 6; i ++){thermostat.up()}
+    expect(thermostat.reportUsage()).toEqual("high-usage");
   });
 });

@@ -1,4 +1,5 @@
 'use strict';
+
 function Thermostat (){
   this.temperature = 20;
   this.powerSaving = true;
@@ -9,14 +10,18 @@ function Thermostat (){
 
 Thermostat.prototype.isPowerSaving = function(){
   return this.powerSaving;
-}
+};
 
 Thermostat.prototype.powerSavingOn = function(){
   this.powerSaving = true;
-}
+};
 
 Thermostat.prototype.powerSavingOff = function(){
   this.powerSaving = false;
+};
+
+Thermostat.prototype.getCurrentTemperature = function(){
+  return this.temperature
 }
 
 Thermostat.prototype.up = function(){
@@ -32,4 +37,10 @@ Thermostat.prototype.down = function(){
 
 Thermostat.prototype.reset = function(){
   this.temperature = 20;
-}
+};
+
+Thermostat.prototype.reportUsage = function(){
+  if(this.temperature < 18){ return "low-usage"; };
+  if(this.temperature < 25){ return "medium-usage"; };
+  return "high-usage"
+};
