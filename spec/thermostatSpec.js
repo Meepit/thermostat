@@ -45,4 +45,12 @@ describe("A thermostat", function(){
       thermostat.up()
     }).toThrowError("Max temperature is 25 when power saving is on");
   });
+
+  it("Should have a max temp of 32 if power saving is off", function(){
+    thermostat.powerSavingOff()
+    for(var i = 0; i < 12; i++){thermostat.up();};
+    expect(function(){
+      thermostat.up()
+    }).toThrowError("Max temperature is 32")
+  })
 });
