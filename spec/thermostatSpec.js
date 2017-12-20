@@ -52,5 +52,11 @@ describe("A thermostat", function(){
     expect(function(){
       thermostat.up()
     }).toThrowError("Max temperature is 32")
-  })
+  });
+
+  it("Should have a reset button that resets temperature to 20", function(){
+    thermostat.up();
+    thermostat.reset();
+    expect(thermostat.temperature).toEqual(20);
+  });
 });

@@ -1,3 +1,4 @@
+'use strict';
 function Thermostat (){
   this.temperature = 20;
   this.powerSaving = true;
@@ -28,3 +29,7 @@ Thermostat.prototype.down = function(){
   if (this.temperature === this.MIN_TEMP){ throw Error("The lowest temperature is 10") }
   this.temperature --;
 };
+
+Thermostat.prototype.reset = function(){
+  this.temperature = 20;
+}
