@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thermostat</title>
+  <script src="src/thermostat.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="src/thermostatController.js"></script>
+  <script src="src/weatherController.js"></script>
+</head>
+
+<body>
+  <h1>Weather</h1>
+  <form id="weatherSearch" method="POST">
+    Enter City: <input type="text" name="cityName">
+    <input type="submit" value="Get weather">
+  </form>
+
+  <h3>Temperature in <span id="city"></span> is: <span id="cityTemp"></span> 'C</h3>
+  <h3>Outlook is: <span id="outlook"></span></h3>
+  <h1>Thermostat</h1>
+
+  <p>Current Temperature: <span id="tempText"> </span> </p>
+  <p>Current mode: <span id="powerSavingMode"> </span> </p>
+  <p>Energy usage: <span id="usageText"> </span> </p>
+
+    <input type="button" id="tempUp" value="Increase">
+    <input type="button" id="tempDown" value="Decrease">
+    <input type="button" id="powerSaveOn" value="Powersaving On">
+    <input type="button" id="powerSaveOff" value="Powersaving Off">
+    <input type="button" id="resetTemp" value="Reset">
+
+</body>
+</html>

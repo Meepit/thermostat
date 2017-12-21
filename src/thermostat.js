@@ -13,6 +13,7 @@ Thermostat.prototype.isPowerSaving = function(){
 };
 
 Thermostat.prototype.powerSavingOn = function(){
+  if(this.temperature > this.MAX_TEMP_POWERSAVING){ this.temperature = 25 }
   this.powerSaving = true;
 };
 
